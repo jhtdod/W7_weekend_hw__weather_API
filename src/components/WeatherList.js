@@ -1,7 +1,10 @@
 import React from "react";
 import Day from "./Day";
 
-const WeatherList = () => {
+const WeatherList = ({days}) => {
+    
+    const dayNodes = 
+
     return(
         <></>
     )
