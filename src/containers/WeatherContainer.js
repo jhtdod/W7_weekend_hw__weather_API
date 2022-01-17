@@ -7,7 +7,7 @@ const WeatherContainer = () => {
 
     useEffect(() => {
         getDays()
-    }, [days])
+    }, [])
 
     const getDays = function(){
         fetch('https://api.open-meteo.com/v1/forecast?latitude=55.96&longitude=-3.22&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum,windspeed_10m_max&timezone=Europe%2FLondon')
@@ -23,8 +23,19 @@ const WeatherContainer = () => {
                 sunset: data.daily.sunset
         }
 
+        let item = {
+            date: '',
+            tempMax: '',
+            tempMin: '',
+            precip: '',
+            windspeed: '',
+            sunrise: '',
+            sunset: '',
+            id: ''
+        }
+
         for (let i = 0; i < fetchedWeather.date.length; i++){
-            days[i] = {
+            item = {
                 date: fetchedWeather.date[i],
                 tempMax: fetchedWeather.tempMax[i],
                 tempMin: fetchedWeather.tempMin[i],
@@ -33,18 +44,26 @@ const WeatherContainer = () => {
                 sunrise: fetchedWeather.sunrise[i],
                 sunset: fetchedWeather.sunset[i],
                 id: i
-            }   
+            }
+            days.push(item)
         }
-        
         setDays(days);
+        console.log(days)
     })}
-    
+
+    const displayDayView = function(){
+        const dayView = days.slice(0, 1);
+        setDays(dayView)
+    }
+
     return(
         <>
             <header>
-                <h1>5-Day Forecast</h1>
+                <h1>Weather Forecast</h1>
             </header>
-            <h2>Cityname</h2>
+            <h2>Edinburgh</h2>
+            <button onClick={getDays}>Week</button>
+            <button onClick={displayDayView}>Day</button>
             <div className="forecast-days">
                 <WeatherList days={days}/>
             </div>

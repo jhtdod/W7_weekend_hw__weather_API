@@ -16,8 +16,10 @@ const WeatherList = ({days}) => {
                 key={day.id}
             />
         )
-        console.log(dayNodes)
+        
     })
+
+    console.log(dayNodes)
 
     return(
         <div>
