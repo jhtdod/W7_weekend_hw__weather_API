@@ -19,8 +19,6 @@ const WeatherList = ({days}) => {
         
     })
 
-    console.log(dayNodes)
-
     return(
         <div>
             {dayNodes}

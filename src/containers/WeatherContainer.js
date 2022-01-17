@@ -34,6 +34,8 @@ const WeatherContainer = () => {
             id: ''
         }
 
+        data = []
+
         for (let i = 0; i < fetchedWeather.date.length; i++){
             item = {
                 date: fetchedWeather.date[i],
@@ -45,10 +47,9 @@ const WeatherContainer = () => {
                 sunset: fetchedWeather.sunset[i],
                 id: i
             }
-            days.push(item)
+            data.push(item)
         }
-        setDays(days);
-        console.log(days)
+        setDays(data);
     })}
 
     const displayDayView = function(){
