@@ -1,7 +1,13 @@
 .display-flex{
     display: flex;
+    justify-content: space-evenly;
+    padding: 5vw 10vw;
 }
 
 .day>ul>li{
     list-style: none;
+}
+
+.day>ul{
+    padding: 0;
 }
