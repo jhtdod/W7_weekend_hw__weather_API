@@ -6,12 +6,13 @@
 .nav{
     justify-content: space-between;
     flex-wrap: nowrap;
-    width: 80vw;
+    width: 100%;
 }
 .nav-item{
-    width: 80vw;
+    width: 100%;
     text-align: center;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .nav-link{
@@ -21,7 +22,7 @@
     0px 1px 1.5px rgb(207, 207, 207);
     border-radius: 10px 10px 0px 0px;
     height: 100%;
-    padding: 0.5vh 0;
+    padding:0;
 }
 
 .nav-link.active{
@@ -30,19 +31,48 @@
     box-shadow: none;
 }
 
-.nav-link > p {
+.nav-link > h6 {
     margin: 0;
-    padding: 0;
+    padding: 2px 0;
+    background-color: rgb(157, 157, 245);
+    border-radius: 9px 9px 0px 0px;
+    color: white;
+    font-size: calc(11px + 0.5vw);
 }
 
-.nav-link > h6 {
-    margin: 0 0 1vh;
+.nav-link.active > h6 {
+    margin: 0;
+    padding: 2px 0;
+    background-color: rgb(103, 103, 253);
+    border-radius: 9px 9px 0px 0px;
+}
+
+.display-flex{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.display-flex > p {
+    margin: 0;
     padding: 0;
+    font-size: calc(11px + 0.4vw);
+}
+
+.temps > p {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    font-size: calc(11px + 0.3vw);
+}
+
+.temp-max {
+    font-weight: bold;
 }
 
 .tab-content{
     border: black solid;
     border-width: 0px 1px 1px;
     height: 50vh;
-    width: auto;
+    width: 100%;
 }

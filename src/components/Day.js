@@ -2,7 +2,6 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css"
 import '../static/DayComponent.css';
 import { CloudDrizzle, Sunrise, Sunset, Thermometer, Wind } from 'react-feather';
-import { Tab } from "bootstrap";
 
 const Day = ({ day }) => {
 

@@ -3,7 +3,6 @@ import Day from "./Day";
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Nav, NavItem, NavLink, TabContainer, TabContent, TabPane } from "react-bootstrap";
 import '../static/WeatherListComponent.css'
-import da from "date-fns/locale/da/index";
 import moment from "moment";
 
 const WeatherList = ({ days }) => {
@@ -13,7 +12,13 @@ const WeatherList = ({ days }) => {
             < NavItem >
                 <NavLink eventKey={day.date}>
                     <h6>{moment(day.date).format('ddd Do')} </h6>
-                    <p>{day.tempMin}&#176;C {day.tempMax}&#176;C</p>
+                    <div className="display-flex">
+                        <p>icon</p>
+                        <div className="temps">
+                            <p className="temp-max">{day.tempMax}&#176;C</p>
+                            <p>{day.tempMin}&#176;C</p>
+                        </div>
+                    </div>
                 </NavLink>
             </NavItem >
         )
