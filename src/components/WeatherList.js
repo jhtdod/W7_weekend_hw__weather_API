@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import { Nav, NavItem, NavLink, TabContainer, TabContent, TabPane } from "react-bootstrap";
 import '../static/WeatherListComponent.css'
 import da from "date-fns/locale/da/index";
+import moment from "moment";
 
 const WeatherList = ({ days }) => {
 
@@ -11,7 +12,7 @@ const WeatherList = ({ days }) => {
         return (
             < NavItem >
                 <NavLink eventKey={day.date}>
-                    <h6>{day.date} </h6>
+                    <h6>{moment(day.date).format('ddd Do')} </h6>
                     <p>{day.tempMin}&#176;C {day.tempMax}&#176;C</p>
                 </NavLink>
             </NavItem >

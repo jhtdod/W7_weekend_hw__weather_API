@@ -7,11 +7,11 @@ const WeatherContainer = () => {
     const [days, setDays] = useState([]);
 
     useEffect(() => {
-        console.log(window.sessionStorage.getItem('days'))
-        if (window.sessionStorage.getItem('days')) {
+        if (sessionStorage.getItem('days')) {
             setDays(JSON.parse(sessionStorage.getItem('days')))
         } else {
             getDays()
+            sessionStorage.setItem('days', JSON.stringify(days));
         }
     }, [])
 
@@ -56,8 +56,6 @@ const WeatherContainer = () => {
                     data.push(item)
                 }
 
-                console.log(data)
-                window.sessionStorage.setItem('days', JSON.stringify(data));
                 setDays(data);
             })
     }
