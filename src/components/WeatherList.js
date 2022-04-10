@@ -1,48 +1,46 @@
 import React from "react";
 import Day from "./Day";
 import "bootstrap/dist/css/bootstrap.min.css"
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
-import { Nav, NavItem, NavLink, Row, TabContainer, TabContent, TabPane } from "react-bootstrap";
+import { Nav, NavItem, NavLink, TabContainer, TabContent, TabPane } from "react-bootstrap";
+import '../static/WeatherListComponent.css'
+import da from "date-fns/locale/da/index";
 
 const WeatherList = ({ days }) => {
 
+    const dayTabs = days.map(day => {
+        return (
+            < NavItem >
+                <NavLink eventKey={day.date}>
+                    <h6>{day.date} </h6>
+                    <p>{day.tempMin}&#176;C {day.tempMax}&#176;C</p>
+                </NavLink>
+            </NavItem >
+        )
+    })
+
     const dayNodes = days.map(day => {
         return (
-            <div>
-                <Nav variant="tabs">
-                    <NavItem>
-                        <NavLink eventKey={day.date}>{day.date}</NavLink>
-                    </NavItem>
-                </Nav>
-                <TabContent>
-                    <TabPane eventKey={day.date}>
-                        <Day
-                            date={day.date}
-                            tempMax={day.tempMax}
-                            tempMin={day.tempMin}
-                            precip={day.precip}
-                            sunrise={day.sunrise}
-                            sunset={day.sunset}
-                            windspeed={day.windspeed}
-                            key={day.id}
-                        />
-                    </TabPane>
-                </TabContent>
-            </div>
+            <TabPane eventKey={day.date}>
+                <Day
+                    day={day}
+                    key={day.id}
+                />
+            </TabPane>
         )
-
-
     })
 
     return (
-        <div>
-            <div className="display-flex">
-                <TabContainer>
-                    {dayNodes}
-                </TabContainer>
-
-            </div>
+        <div className="tabs">
+            {days.length > 0 ?
+                <TabContainer defaultActiveKey={days[0].date}>
+                    <Nav>
+                        {dayTabs}
+                    </Nav>
+                    <TabContent>
+                        {dayNodes}
+                    </TabContent>
+                </TabContainer> :
+                null}
         </div>
     )
 }

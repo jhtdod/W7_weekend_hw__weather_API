@@ -1,13 +1,8 @@
-.display-flex{
-    display: flex;
-    justify-content: space-evenly;
-    padding: 5vw 10vw;
+ul{
+    padding: 3% 3% 0;
 }
 
-.day>ul>li{
+ul>li{
+    margin: 2vh 0;
     list-style: none;
-}
-
-.day>ul{
-    padding: 0;
 }
