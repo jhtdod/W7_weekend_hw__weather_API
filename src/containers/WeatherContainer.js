@@ -16,11 +16,14 @@ const WeatherContainer = () => {
     }, [])
 
     const getDays = function () {
-        fetch('https://api.open-meteo.com/v1/forecast?latitude=55.9533&longitude=-3.1883&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum,windspeed_10m_max&windspeed_unit=mph&daily=weathercode&timezone=Europe%2FLondon')
+        fetch('https://api.open-meteo.com/v1/forecast?latitude=55.9533&longitude=-3.1883&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum,windspeed_10m_max&windspeed_unit=mph&daily=weathercode&hourly=apparent_temperature&timezone=Europe%2FLondon')
             .then(response => response.json())
             .then(data => {
 
                 const fetchedWeather = []
+
+                let start = 0;
+                let end = 24;
 
                 for (let i = 0; i < data.daily.time.length; i++) {
                     const item = {
@@ -32,8 +35,11 @@ const WeatherContainer = () => {
                         windspeed: data.daily.windspeed_10m_max[i],
                         sunrise: data.daily.sunrise[i],
                         sunset: data.daily.sunset[i],
+                        hourlyTemp: data.hourly.apparent_temperature.slice(start, end),
                         id: i
                     }
+                    start += 24;
+                    end += 24;
                     fetchedWeather.push(item)
                 }
 
