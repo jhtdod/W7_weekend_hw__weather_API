@@ -1,6 +1,6 @@
 .tabs{
     padding: 2vw 0;
-    margin: 0 10vw;
+    margin: 0;
 }
 
 .nav{
@@ -16,35 +16,41 @@
 }
 
 .nav-link{
-    border: black solid;
+    border: rgb(40, 50, 83);
     border-width: 1px 1px 0px;
-    box-shadow: inset 0px -1px 1.5px rgb(207, 207, 207),
-    0px 1px 1.5px rgb(207, 207, 207);
+    box-shadow: inset 0px -1px 1.5px rgb(40, 50, 83),
+    0px 1px 1.5px rgb(40, 50, 83);
     border-radius: 10px 10px 0px 0px;
     height: 100%;
     padding:0;
+    background-color: rgb(192, 189, 189);
+}
+
+.nav-link:hover{
+    background-color: whitesmoke;
 }
 
 .nav-link.active{
-    border: black solid;
+    border: rgb(40, 50, 83);
     border-width: 1px 1px 0px;
     box-shadow: none;
+    background-color: whitesmoke;
 }
 
 .nav-link > h6 {
     margin: 0;
     padding: 2px 0;
-    background-color: rgb(157, 157, 245);
-    border-radius: 9px 9px 0px 0px;
-    color: white;
+    background-color: rgb(162, 162, 192);
+    /* border-radius: 9px 9px 0px 0px; */
+    color: whitesmoke;
     font-size: calc(11px + 0.5vw);
 }
 
 .nav-link.active > h6 {
     margin: 0;
     padding: 2px 0;
-    background-color: rgb(103, 103, 253);
-    border-radius: 9px 9px 0px 0px;
+    background-color: rgb(93, 93, 158);
+    /* border-radius: 9px 9px 0px 0px; */
 }
 
 .display-flex{
@@ -71,8 +77,11 @@
 }
 
 .tab-content{
-    border: black solid;
+    border: rgb(40, 50, 83);
     border-width: 0px 1px 1px;
     height: 50vh;
     width: 100%;
+    background-color: whitesmoke;
+    color: black;
+    /* border-radius: 0 0 9px 9px; */
 }

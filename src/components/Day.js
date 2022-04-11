@@ -2,12 +2,14 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css"
 import '../static/DayComponent.css';
 import { CloudDrizzle, Sunrise, Sunset, Thermometer, Wind } from 'react-feather';
+import Icon from "./Icon";
 
 const Day = ({ day }) => {
 
     return (
         <>
             <ul>
+                <li><Icon weatherCode={day.weatherCode} keyInput={"description"} /></li>
                 <li><Thermometer size={18} />Max {day.tempMax}&#176;C</li>
                 <li><Thermometer size={18} />Min {day.tempMin}&#176;C</li>
                 <li><CloudDrizzle size={18} /> {day.precip} mm</li>

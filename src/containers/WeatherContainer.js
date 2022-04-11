@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import WeatherList from "../components/WeatherList";
 import '../static/WeatherContainer.css'
@@ -8,19 +9,19 @@ const WeatherContainer = () => {
 
     useEffect(() => {
         if (sessionStorage.getItem('days')) {
-            setDays(JSON.parse(sessionStorage.getItem('days')))
+            setDays(JSON.parse(sessionStorage.getItem('days')));
         } else {
             getDays()
-            sessionStorage.setItem('days', JSON.stringify(days));
         }
     }, [])
 
     const getDays = function () {
-        fetch('https://api.open-meteo.com/v1/forecast?latitude=55.96&longitude=-3.22&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum,windspeed_10m_max&windspeed_unit=mph&timezone=Europe%2FLondon')
+        fetch('https://api.open-meteo.com/v1/forecast?latitude=55.96&longitude=-3.22&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum,windspeed_10m_max&windspeed_unit=mph&daily=weathercode&timezone=Europe%2FLondon')
             .then(response => response.json())
             .then(data => {
                 const fetchedWeather = {
                     date: data.daily.time,
+                    weatherCode: data.daily.weathercode,
                     tempMax: data.daily.temperature_2m_max,
                     tempMin: data.daily.temperature_2m_min,
                     precip: data.daily.precipitation_sum,
@@ -31,6 +32,7 @@ const WeatherContainer = () => {
 
                 let item = {
                     date: '',
+                    weatherCode: '',
                     tempMax: '',
                     tempMin: '',
                     precip: '',
@@ -45,6 +47,7 @@ const WeatherContainer = () => {
                 for (let i = 0; i < fetchedWeather.date.length; i++) {
                     item = {
                         date: fetchedWeather.date[i],
+                        weatherCode: fetchedWeather.weatherCode[i],
                         tempMax: fetchedWeather.tempMax[i],
                         tempMin: fetchedWeather.tempMin[i],
                         precip: fetchedWeather.precip[i],
@@ -56,6 +59,7 @@ const WeatherContainer = () => {
                     data.push(item)
                 }
 
+                sessionStorage.setItem('days', JSON.stringify(data))
                 setDays(data);
             })
     }
