@@ -5,6 +5,7 @@ import { Nav, NavItem, NavLink, TabContainer, TabContent, TabPane } from "react-
 import '../static/WeatherListComponent.css'
 import moment from "moment";
 import Icon from "./Icon";
+import Hourly from "./Hourly";
 
 const WeatherList = ({ days }) => {
 
@@ -28,9 +29,10 @@ const WeatherList = ({ days }) => {
     const dayNodes = days.map(day => {
         return (
             <TabPane key={day.id} eventKey={day.date}>
-                    <Day
-                        day={day}
-                    />
+                <div className="tab-content-flex">
+                    <Day day={day} />
+                        <Hourly day={day} />
+                </div>
             </TabPane>
         )
     })

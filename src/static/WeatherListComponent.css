@@ -83,5 +83,19 @@
     width: 100%;
     background-color: whitesmoke;
     color: black;
+    font-size: calc(11px + 0.5vw);
+
     /* border-radius: 0 0 9px 9px; */
+}
+
+.tab-content-flex{
+    display: flex;
+    justify-content: space-around;
+}
+
+.chart-container{
+    padding: 1vh 1vw;
+    height:45vh;
+    width: 50vw;
+    
 }
