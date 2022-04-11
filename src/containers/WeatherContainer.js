@@ -16,51 +16,29 @@ const WeatherContainer = () => {
     }, [])
 
     const getDays = function () {
-        fetch('https://api.open-meteo.com/v1/forecast?latitude=55.96&longitude=-3.22&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum,windspeed_10m_max&windspeed_unit=mph&daily=weathercode&timezone=Europe%2FLondon')
+        fetch('https://api.open-meteo.com/v1/forecast?latitude=55.9533&longitude=-3.1883&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum,windspeed_10m_max&windspeed_unit=mph&daily=weathercode&timezone=Europe%2FLondon')
             .then(response => response.json())
             .then(data => {
-                const fetchedWeather = {
-                    date: data.daily.time,
-                    weatherCode: data.daily.weathercode,
-                    tempMax: data.daily.temperature_2m_max,
-                    tempMin: data.daily.temperature_2m_min,
-                    precip: data.daily.precipitation_sum,
-                    windspeed: data.daily.windspeed_10m_max,
-                    sunrise: data.daily.sunrise,
-                    sunset: data.daily.sunset
-                }
 
-                let item = {
-                    date: '',
-                    weatherCode: '',
-                    tempMax: '',
-                    tempMin: '',
-                    precip: '',
-                    windspeed: '',
-                    sunrise: '',
-                    sunset: '',
-                    id: ''
-                }
+                const fetchedWeather = []
 
-                data = []
-
-                for (let i = 0; i < fetchedWeather.date.length; i++) {
-                    item = {
-                        date: fetchedWeather.date[i],
-                        weatherCode: fetchedWeather.weatherCode[i],
-                        tempMax: fetchedWeather.tempMax[i],
-                        tempMin: fetchedWeather.tempMin[i],
-                        precip: fetchedWeather.precip[i],
-                        windspeed: fetchedWeather.windspeed[i],
-                        sunrise: fetchedWeather.sunrise[i],
-                        sunset: fetchedWeather.sunset[i],
+                for (let i = 0; i < data.daily.time.length; i++) {
+                    const item = {
+                        date: data.daily.time[i],
+                        weatherCode: data.daily.weathercode[i],
+                        tempMax: data.daily.temperature_2m_max[i],
+                        tempMin: data.daily.temperature_2m_min[i],
+                        precip: data.daily.precipitation_sum[i],
+                        windspeed: data.daily.windspeed_10m_max[i],
+                        sunrise: data.daily.sunrise[i],
+                        sunset: data.daily.sunset[i],
                         id: i
                     }
-                    data.push(item)
+                    fetchedWeather.push(item)
                 }
 
-                sessionStorage.setItem('days', JSON.stringify(data))
-                setDays(data);
+                sessionStorage.setItem('days', JSON.stringify(fetchedWeather))
+                setDays(fetchedWeather);
             })
     }
 

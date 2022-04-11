@@ -10,11 +10,11 @@ const WeatherList = ({ days }) => {
 
     const dayTabs = days.map(day => {
         return (
-            < NavItem >
+            < NavItem key={day.id}>
                 <NavLink eventKey={day.date}>
                     <h6>{moment(day.date).format('ddd Do')} </h6>
                     <div className="display-flex">
-                        <Icon weatherCode={day.weatherCode} keyInput={"icon"}/>
+                        <Icon key={day.id} weatherCode={day.weatherCode} keyInput={"icon"} />
                         <div className="temps">
                             <p className="temp-max">{day.tempMax}&#176;C</p>
                             <p>{day.tempMin}&#176;C</p>
@@ -27,11 +27,10 @@ const WeatherList = ({ days }) => {
 
     const dayNodes = days.map(day => {
         return (
-            <TabPane eventKey={day.date}>
-                <Day
-                    day={day}
-                    key={day.id}
-                />
+            <TabPane key={day.id} eventKey={day.date}>
+                    <Day
+                        day={day}
+                    />
             </TabPane>
         )
     })

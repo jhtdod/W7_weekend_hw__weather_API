@@ -21,3 +21,12 @@
 .weather-container > a:hover{
     color: white;
 }
+
+.weather-container > h2 {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: calc(11px + 3vw);
+    letter-spacing: 2px;
+    padding:0;
+    margin:0;
+}
