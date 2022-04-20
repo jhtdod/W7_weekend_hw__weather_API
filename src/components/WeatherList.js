@@ -5,7 +5,7 @@ import { Nav, NavItem, NavLink, TabContainer, TabContent, TabPane } from "react-
 import '../static/WeatherListComponent.css'
 import moment from "moment";
 import Icon from "./Icon";
-import Hourly from "./Hourly";
+import BarChart from "./BarChart";
 
 const WeatherList = ({ days }) => {
 
@@ -13,7 +13,11 @@ const WeatherList = ({ days }) => {
         return (
             < NavItem key={day.id}>
                 <NavLink eventKey={day.date}>
-                    <h6>{moment(day.date).format('ddd Do')} </h6>
+                    <h6>{moment().format('ddd Do') === moment(day.date).format('ddd Do') ?
+                        'Today':
+                        moment(day.date).format('ddd Do')
+                    }
+                    </h6>
                     <div className="display-flex">
                         <Icon key={day.id} weatherCode={day.weatherCode} keyInput={"icon"} />
                         <div className="temps">
@@ -31,7 +35,7 @@ const WeatherList = ({ days }) => {
             <TabPane key={day.id} eventKey={day.date}>
                 <div className="tab-content-flex">
                     <Day day={day} />
-                        <Hourly day={day} />
+                    <BarChart day={day} />
                 </div>
             </TabPane>
         )

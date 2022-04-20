@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Bar } from 'react-chartjs-2';
+import ChartDataLabels from 'chartjs-plugin-datalabels'
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -10,7 +11,7 @@ import {
     Legend,
 } from 'chart.js';
 
-const Hourly = ({ day }) => {
+const BarChart = ({ day }) => {
 
     ChartJS.register(
         CategoryScale,
@@ -18,7 +19,8 @@ const Hourly = ({ day }) => {
         BarElement,
         Title,
         Tooltip,
-        Legend
+        Legend,
+        ChartDataLabels
     );
 
     const options = {
@@ -26,22 +28,34 @@ const Hourly = ({ day }) => {
         scales: {
             y: {
                 ticks: {
-                    // callback: function (value, index, ticks) {
-                    //     return value + '\u00B0C'
-                    // },
                     stepSize: 2,
                     min: 16,
-                    max: 100
+                    max: 100,
+                    display: false
                 },
-                title: {
-                    display: true,
-                    text: 'Apparent Temperature'
+                grid: {
+                    display: false,
+                    drawBorder: false
+                },
+                beginAtZero: true
+            },
+            x: {
+                grid: {
+                    display: false
                 }
             }
         },
         plugins: {
-            legend: false
-        }
+            legend: false,
+            Animation: false,
+            hover: false,
+            datalabels: {
+                display:true,
+                color: 'rgb(0, 0, 0)',
+                anchor: 'end',
+                align: 'start'
+            }
+        },
     }
 
     const labels = ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00",
@@ -53,7 +67,7 @@ const Hourly = ({ day }) => {
     const data = {
         labels,
         datasets: [{
-            backgroundColor: 'rgb(255, 99, 132)',
+            backgroundColor: 'rgb(162, 162, 192)',
             maintainAspectRatio: false,
             data: day.hourlyTemp
         }]
@@ -66,4 +80,4 @@ const Hourly = ({ day }) => {
     )
 }
 
-export default Hourly;
+export default BarChart;

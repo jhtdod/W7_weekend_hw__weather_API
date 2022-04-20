@@ -1,13 +1,25 @@
+html,body{
+    height:100%;
+    background-color:rgb(40, 50, 83);
+
+}
+
 .weather-container{
-    height: 100vh;
+    height: 100%;
     margin: 0;
-    padding: 5vh 5vw;
+    padding: 0;
+
     background-color:rgb(40, 50, 83);
     color: white;
 }
 
-.weather-container > a {
-    position:absolute;
+/* .body{
+    height: 100vh;
+} */
+
+.footer > a {
+    position:fixed;
+    width: 100vw;
     left:0;
     bottom:0;
     right:0;
@@ -18,7 +30,7 @@
     text-decoration: none;
 }
 
-.weather-container > a:hover{
+.footer > a:hover{
     color: white;
 }
 

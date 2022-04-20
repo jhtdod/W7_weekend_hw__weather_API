@@ -1,8 +1,19 @@
+.weather-stats{
+    padding: 2vh 1vw;
+}
+
 ul{
     padding: 3% 3% 0;
+    display: inline-grid;
+    grid-template-columns: auto auto;
 }
 
 ul>li{
-    margin: 2vh 0;
+    margin: 2vh;
+    padding: 0 0 2px;
+    width: 15vw;
+    text-align: center;
+    font-size: calc(9px + 0.2vh);
     list-style: none;
+    border-bottom: solid rgb(73, 73, 73) 0.5px;
 }

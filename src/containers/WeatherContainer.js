@@ -29,10 +29,10 @@ const WeatherContainer = () => {
                     const item = {
                         date: data.daily.time[i],
                         weatherCode: data.daily.weathercode[i],
-                        tempMax: data.daily.temperature_2m_max[i],
-                        tempMin: data.daily.temperature_2m_min[i],
-                        precip: data.daily.precipitation_sum[i],
-                        windspeed: data.daily.windspeed_10m_max[i],
+                        tempMax: Math.round(data.daily.temperature_2m_max[i]),
+                        tempMin: Math.round(data.daily.temperature_2m_min[i]),
+                        precip: Math.round(data.daily.precipitation_sum[i] *10)/10,
+                        windspeed: Math.round(data.daily.windspeed_10m_max[i]),
                         sunrise: data.daily.sunrise[i],
                         sunset: data.daily.sunset[i],
                         hourlyTemp: data.hourly.apparent_temperature.slice(start, end),
@@ -49,14 +49,20 @@ const WeatherContainer = () => {
     }
 
     return (
-        <div className="weather-container">
-            <header>
-                <h1>Weather Forecast</h1>
-            </header>
-            <h2>Edinburgh</h2>
-            <WeatherList days={days} />
-            <a href="https://open-meteo.com/">Weather data by Open-Meteo.com</a>
-        </div>
+        <>
+            <div className="weather-container">
+                <header>
+                    <h1>Weather Forecast</h1>
+                </header>
+                <h2>Edinburgh</h2>
+                <div className="body">
+                    <WeatherList days={days} />
+                </div>
+            </div >
+            <div className="footer">
+                <a href="https://open-meteo.com/">Weather data by Open-Meteo.com</a>
+            </div>
+        </>
     )
 }
 
