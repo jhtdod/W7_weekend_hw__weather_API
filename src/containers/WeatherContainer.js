@@ -58,7 +58,7 @@ const WeatherContainer = () => {
                 <div className="body">
                     <WeatherList days={days} />
                 </div>
-            </div >
+            </div>
             <div className="footer">
                 <a href="https://open-meteo.com/">Weather data by Open-Meteo.com</a>
             </div>

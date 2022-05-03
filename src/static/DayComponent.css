@@ -1,14 +1,18 @@
-.weather-stats{
+.weather-stats {
     padding: 2vh 1vw;
+    flex-grow: 1;
 }
 
-ul{
+ul {
     padding: 3% 3% 0;
     display: inline-grid;
+    justify-items: center;
+
     grid-template-columns: auto auto;
+    width: 100%;
 }
 
-ul>li{
+ul>li {
     margin: 2vh;
     padding: 0 0 2px;
     width: 15vw;
